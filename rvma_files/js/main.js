@@ -15,7 +15,7 @@ const text = {
         sl: 'Súhlasím so spracovaním mojich osobných údajov.',
     },
     'menu_list-link1': {
-        en: 'Homee',
+        en: 'Home',
         ua: 'Головна',
         sl: 'Domov',
     },
