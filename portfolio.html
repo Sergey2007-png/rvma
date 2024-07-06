@@ -216,23 +216,49 @@
     </div>
 
     <section class="contact contact_portfolio">
-        <div class="container">
-            <h2 class="contact_title" id="contact">Contact us</h2>
-            <form method="post">
-                <input required type="text" name="name" placeholder="name" class="contact_input contact_input1">
-                <input required type="email" name="email" placeholder="email" class="contact_input contact_input2">
-                <input required type="text" name="message" placeholder="message" class="contact_input contact_input3">
-                <div class="contact_agree">
-                    <input type="checkbox" name="checkbox" id="agreeText">
-                    <label class="contact_text" for="agreeText">I consent to the processing of my personal data</label>
-                </div>
-                <button type="submit" class="contact_main-button">
-                    <p class="contact_main_btn-text">Send</p>
-                    <img src="rvma_files/images/ion_arrow-up (1).png" alt="Send Icon" class="contact_main-btn-img">
-                </button>
-            </form>
-        </div>
-    </section>
+            <div class="container">
+                <h2 class="contact_title" id="contact">Contact us</h2>
+                <form method="post">
+                    <input required type="text" name="name" placeholder="name" class="contact_input contact_input1">
+                    <input required type="email" name="email" placeholder="email" class="contact_input contact_input2">
+                    <input required type="text" name="message" placeholder="message"
+                        class="contact_input contact_input3">
+                    <div class="contact-choise">
+                        <label for="workType1" class="contact-choise__option active">
+                            <input required value="SEO promotion" checked type="radio" name="workType"
+                                class="contact-choise__radio" id="workType1">
+                            <p class="contact-choise__text1">SEO promotion</p>
+                        </label>
+                        <label for="workType2" class="contact-choise__option">
+                            <input required value="Creating a website" type="radio" name="workType"
+                                class="contact-choise__radio" id="workType2">
+                            <p class="contact-choise__text2">Creating a website</p>
+                        </label>
+                        <label for="workType3" class="contact-choise__option">
+                            <input required value="Support the website" type="radio" name="workType"
+                                class="contact-choise__radio" id="workType3">
+                            <p class="contact-choise__text3">Support the website</p>
+                        </label>
+                    </div>
+                    <label for="file" class="contact-file">
+                        <div class="contact-file__icon">
+                            <img src="./rvma_files/images/clip.svg" alt="clip">
+                            <input type="file" name="file" id="file" class="contact-file__input">
+                        </div>
+                        <p class="contact-file__text">Прикріпити файл</p>
+                    </label>
+                    <div class="contact_agree">
+                        <input type="checkbox" name="checkbox" id="agreeText">
+                        <label class="contact_text" for="agreeText">I consent to the processing of my personal
+                            data</label>
+                    </div>
+                    <button type="submit" class="contact_main-button">
+                        <p class="contact_main_btn-text">Send</p>
+                        <img src="rvma_files/images/ion_arrow-up (1).png" alt="Send Icon" class="contact_main-btn-img">
+                    </button>
+                </form>
+            </div>
+        </section>
 
 
     <footer class="footer">
