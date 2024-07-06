@@ -898,7 +898,6 @@ font-family: "DM Sans", sans-serif;
     background: -webkit-gradient(linear, left top, right bottom, from(#333333), to(#000000));
     background: linear-gradient(to bottom right, #333333, #000000);
     min-height: 390px;
-    margin-bottom: 100px;
     padding: 0 0 100px 0;
     text-align: center;
 }
@@ -940,9 +939,7 @@ font-family: "DM Sans", sans-serif;
 /* CONTACT */
 
 .contact_portfolio {
-    padding: 100px 0 0 0;
 }
-
 
 .contact {
     text-align: center;
@@ -951,22 +948,28 @@ font-family: "DM Sans", sans-serif;
     z-index: 2;
 }
 
+.contact form {
+    max-width: 644px;
+    margin: 0 auto;
+}
+
 .contact_title {
     line-height: 24px;
     font-size: 36px;
     color:#000;
     font-weight: bold;
     margin-bottom: 60px;
+    padding: 100px 0 0 0;
 }
 
 .contact_input {
     width: 100%; 
-    max-width: 535px; 
+    max-width: 644px; 
     display: block;
     margin: 0 auto;
     -webkit-box-sizing: border-box;
             box-sizing: border-box; 
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding: 15px 20px;
     border: none; 
     border-bottom: 1px solid #333; 
@@ -975,15 +978,95 @@ font-family: "DM Sans", sans-serif;
     border: none; 
 }
 
+.contact-choise {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 10px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 10px 0 0 0;
+}
+.contact-choise__option {
+    padding: 9px 0;
+    border: #333 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #fff;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    width: 208px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+.contact-choise__radio {
+    display: none;
+}
+.contact-choise__option.active {
+    background: #333;
+    cursor: default;
+}
+.contact-choise__option.active p {
+    color: #fff;
+}
+.contact-choise__option p {
+    font-size: 18px;
+    color: #333;
+}
+.contact-file {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    padding: 20px 0 0 0;
+}
+.contact-file__icon {
+    width: 42px;
+    height: 42px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-radius: 5px;
+    border: 1px solid #333 ;
+}
+.contact-file__icon input {
+    display: none;
+}
+.contact-file__text {
+    font-size: 18px;
+    color: #333;
+}
+
 .contact_agree {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     gap: 15px;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
     padding: 10px 0;
+    margin: 15px 15px 15px 2px;
+}
+.contact_agree input {
+    max-height: 14px;
+    margin: 4px 0 0 0;
 }
 .contact_agree p {
     color: #000;
@@ -1042,7 +1125,7 @@ font-family: "DM Sans", sans-serif;
     border: none;
     padding: 15px 40px;
     position: relative;
-    top:20px;
+    top: 10px;
     gap: 15px;
     cursor: pointer;
     -webkit-transition: all 0.5s;
@@ -2089,6 +2172,10 @@ margin-bottom: 15px;
     .store_item-text {
     font-size: 16px;
     }
+	
+        .contact_text {
+            text-align: left;
+        }
 }
 
 @media(max-width:421px) {
@@ -2107,7 +2194,15 @@ margin-bottom: 15px;
         padding-bottom: 0px;
         margin-bottom: 100px;
     }
-    
+    .contact-choise {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+	}
+	.contact-choise__option {
+            width: 100%;
+        } 
  }
 
  @media(max-width:410px) {
