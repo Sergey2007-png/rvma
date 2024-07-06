@@ -25,12 +25,7 @@ const text = {
         sl: 'Portfólio',
     },
     'menu_list-link3': {
-        en: 'Blog',
-        ua: 'Блог',
-        sl: 'Blog',
-    },
-    'menu_list-link4': {
-        en: 'Сontacts',
+        en: 'Contacts',
         ua: 'Контакти',
         sl: 'Kontakty',
     },
@@ -244,6 +239,26 @@ const text = {
         ua: "повідомлення",
         sl: 'správa',
     },
+    'contact-choise__text1': {
+        en: 'SEO promotion',
+        ua: "СЕО просування",
+        sl: 'SEO propagácia',
+    },
+    'contact-choise__text2': {
+        en: 'Creating a website ',
+        ua: "Створення сайту",
+        sl: 'Vytvorenie webovej stránky',
+    },
+    'contact-choise__text3': {
+        en: 'Support the website',
+        ua: "Підтримка сайту",
+        sl: 'Podpora webovej stránky',
+    },
+    'contact-file__text': {
+        en: 'Attach a file',
+        ua: "Прикріпити файл",
+        sl: 'Priložiť súbor',
+    },
     'contact_main_btn-text': {
         en: 'Send',
         ua: "відправити",
@@ -355,7 +370,6 @@ const text = {
         sl: 'Webová stránka pre obchod s organickými produktami',
     },
 }
-
 
 window.onload = function () {
     window.scrollTo(0, 0);
@@ -637,6 +651,29 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => {
                 document.querySelector('.message__fail').style.display = 'none'
             }, 3000)
+        }
+    })
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const options = document.querySelectorAll('.contact-choise__option')
+
+    options.forEach(item => {
+        item.addEventListener('click', () => {
+            document.querySelector('.contact-choise__option.active').classList.remove('active')
+            item.classList.add('active')
+        })
+    })
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const fileInput = document.querySelector('.contact-file__input')
+
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0]
+        if (file) {
+            document.querySelector('.contact-file__text').innerHTML = file.name
         }
     })
 });
