@@ -25,6 +25,11 @@ const text = {
         sl: 'Portfólio',
     },
     'menu_list-link3': {
+        en: 'Blog',
+        ua: 'Блог',
+        sl: 'Blog',
+    },
+    'menu_list-link4': {
         en: 'Contacts',
         ua: 'Контакти',
         sl: 'Kontakty',
