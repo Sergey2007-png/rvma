@@ -1478,6 +1478,8 @@ font-family: "DM Sans", sans-serif;
 
 .store {
 padding: 60px 0 140px 0;
+position: relative;
+z-index: 2;
 }
 
 
@@ -1519,6 +1521,10 @@ margin-bottom: 30px;
 }
 
 
+.tabs {
+position: relative;
+z-index: 2;
+}
 .tab_item {
     max-width: 335px;
 }
