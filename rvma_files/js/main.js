@@ -25,7 +25,12 @@ const text = {
         sl: 'Portfólio',
     },
     'menu_list-link3': {
-        en: 'Contacts',
+        en: 'Blog',
+        ua: 'Блог',
+        sl: 'Blog',
+    },
+    'menu_list-link4': {
+        en: 'Сontacts',
         ua: 'Контакти',
         sl: 'Kontakty',
     },
@@ -35,21 +40,6 @@ const text = {
         sl: 'Vitajte na našej webovej stránke!',
     },
     'header_main-text': {
-        en: 'We are ready to create a Website for you with any design and content based on your wishes.',
-        ua: 'Ми готові створити для вас вебсайт з будь-яким дизайном та контентом на основі ваших побажань.',
-        sl: 'Sme pripravení vytvoriť pre vás webovú stránku s akýmkoľvek dizajnom a obsahom podľa vašich želaní.',
-    },
-    'header_main_btn-text-mobile': {
-        en: 'Get started',
-        ua: 'Початок',
-        sl: 'Začnite',
-    },
-    'header_main-info-title-mobile': {
-        en: 'Welcome to our website!',
-        ua: 'Ласкаво просимо на наш вебсайт!',
-        sl: 'Vitajte na našej webovej stránke!',
-    },
-    'header_main-text-mobile': {
         en: 'We are ready to create a Website for you with any design and content based on your wishes.',
         ua: 'Ми готові створити для вас вебсайт з будь-яким дизайном та контентом на основі ваших побажань.',
         sl: 'Sme pripravení vytvoriť pre vás webovú stránku s akýmkoľvek dizajnom a obsahom podľa vašich želaní.',
@@ -366,6 +356,7 @@ const text = {
     },
 }
 
+
 window.onload = function () {
     window.scrollTo(0, 0);
 }
@@ -544,30 +535,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 switch (item.lng) {
                     case 'ua':
-                        setLngStyle('.header_inner', 'marginBottom', '40px')
                         setLngStyle('.header_main-button', 'maxWidth', '200px')
+                        if (document.documentElement.clientWidth <= 1100) {
+                            setLngStyle('.header_main-button', 'maxWidth', '165px')
+                        }
                         if (document.documentElement.clientWidth <= 550) {
                             setLngStyle('.menu_list', 'right', '-14px')
-                            setLngStyle('.header_main-button-mobile', 'maxWidth', '170px')
-                            setLngStyle('.header_inner', 'marginBottom', '100px')
+                            setLngStyle('.header_main-button', 'maxWidth', '165px')
                         }
                         break;
                     case 'sl':
-                        setLngStyle('.header_inner', 'marginBottom', '40px')
                         setLngStyle('.header_main-button', 'maxWidth', '185px')
+                        if (document.documentElement.clientWidth <= 1100) {
+                            setLngStyle('.header_main-button', 'maxWidth', '150px')
+                        }
                         if (document.documentElement.clientWidth <= 550) {
                             setLngStyle('.menu_list', 'right', '17px')
-                            setLngStyle('.header_main-button-mobile', 'maxWidth', '155px')
-                            setLngStyle('.header_inner', 'marginBottom', '100px')
+                            setLngStyle('.header_main-button', 'maxWidth', '150px')
                         }
                         break;
                     case 'en':
-                        setLngStyle('.header_inner', 'marginBottom', '100px')
                         setLngStyle('.header_main-button', 'maxWidth', '230px')
+                        if (document.documentElement.clientWidth <= 1100) {
+                            setLngStyle('.header_main-button', 'maxWidth', '190px')
+                        }
                         if (document.documentElement.clientWidth <= 550) {
                             setLngStyle('.menu_list', 'right', '10px')
-                            setLngStyle('.header_main-button-mobile', 'maxWidth', '200px')
-                            setLngStyle('.header_inner', 'marginBottom', '100px')
+                            setLngStyle('.header_main-button', 'maxWidth', '190px')
                         }
                         break;
                 }
@@ -646,3 +640,33 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })
 });
+
+
+let tab = function () {
+    let tabNav = document.querySelectorAll('.tabs-nav__item'),
+        tabContent = document.querySelectorAll('.tab'),
+        tabName;
+
+    tabNav.forEach(item => {
+        item.addEventListener('click', selectTabNav)
+    });
+
+    function selectTabNav() {
+        tabNav.forEach(item => {
+            item.classList.remove('is-active');
+        });
+        this.classList.add('is-active');
+        tabName = this.getAttribute('data-tab-name');
+        selectTabContent(tabName);
+    }
+
+    function selectTabContent(tabName) {
+        tabContent.forEach(item => {
+            item.classList.contains(tabName) ? item.classList.add('is-active') : item.classList.remove('is-active');
+        })
+    }
+
+};
+
+
+tab();
