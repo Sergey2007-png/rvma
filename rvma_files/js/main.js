@@ -1,3 +1,39 @@
+const articles = [
+    {
+        title: 'Is My Website Broken?',
+        snippet: 'Are you experiencing a drop in online sales or a decrease intraffic to your website?Are you wondering how your once high ranking website is no longer reaching its full',
+        tags: {
+            en: ['web disign', 'development'],
+            ua: ['вебдизайн', 'розробка'],
+            sl: ['webový dizajn', 'vývoj'],
+        },
+        timeToRead: '2 minute read',
+        img: 'rvma_files/images/articleImage1.png'
+    },
+    {
+        title: 'Web Design Trends in 2024',
+        snippet: 'As always new trends come along with the start of a New Year. Across every industry we see this happening, and Web Design is no different. More than ever businesses need to evolve and websites go through different stages of evolution constantly.',
+        tags: {
+            en: ['news', 'web disign'],
+            ua: ['новини', 'вебдизайн'],
+            sl: ['správy', 'webový dizajn'],
+        },
+        timeToRead: '4 minute read',
+        img: 'rvma_files/images/articleImage2.png'
+    },
+    {
+        title: 'Free SEO Audit',
+        snippet: 'To compile a complete, thorough and accurate SEO Audit report one would usually focus around examining three key areas which would be Technical SEO, On-Page SEO and Off-Page SEO.',
+        tags: {
+            en: ['seo', 'tips & tricks'],
+            ua: ['seo', 'поради та підказки'],
+            sl: ['seo', 'tipy a triky'],
+        },
+        timeToRead: '3 minute read',
+        img: 'rvma_files/images/articleImage3.png'
+    },
+]
+
 const text = {
     'message__text1': {
         en: 'Your message has been sent successfully',
@@ -531,9 +567,9 @@ document.addEventListener('DOMContentLoaded', function () {
         getStorageLng()
     })
 
-    async function getStorageLng() {
-        if (await localStorage.getItem('lng')) {
-            editCurrentLng(await localStorage.getItem('lng'))
+    function getStorageLng() {
+        if (localStorage.getItem('lng')) {
+            editCurrentLng(localStorage.getItem('lng'))
         }
     }
 
@@ -683,32 +719,98 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    let filter = ''
+    const articleContainer = document.querySelector('.tabs__content')
+    const tabsNavItems = document.querySelectorAll('.tabs-nav__item')
 
-let tab = function () {
-    let tabNav = document.querySelectorAll('.tabs-nav__item'),
-        tabContent = document.querySelectorAll('.tab'),
-        tabName;
+    createPopularSection()
 
-    tabNav.forEach(item => {
-        item.addEventListener('click', selectTabNav)
-    });
-
-    function selectTabNav() {
-        tabNav.forEach(item => {
-            item.classList.remove('is-active');
-        });
-        this.classList.add('is-active');
-        tabName = this.getAttribute('data-tab-name');
-        selectTabContent(tabName);
+    if (articleContainer) {
+        showArticles()
     }
 
-    function selectTabContent(tabName) {
-        tabContent.forEach(item => {
-            item.classList.contains(tabName) ? item.classList.add('is-active') : item.classList.remove('is-active');
+    if (tabsNavItems) {
+        tabsNavItems.forEach(item => {
+            item.addEventListener('click', () => {
+                filter = item.dataset.articleFilter
+                showArticles()
+
+                document.querySelector('.tabs-nav__item.active').classList.remove('active')
+                item.classList.add('active')
+            })
         })
     }
 
-};
+    function showArticles() {
+        articleContainer.innerHTML = ''
+
+        articles.filter(item => {
+            if (filter) {
+                return item.tags.en.includes(filter)
+            } else {
+                return item
+            }
+        }).forEach(item => {
+            articleContainer.innerHTML += createArticle(item)
+        })
+    }
 
 
-tab();
+});
+
+function createArticle({ title, snippet, timeToRead, img, tags }) {
+    let tagsHtml = ''
+
+    tags.en.forEach((item, index) => {
+        tagsHtml += `<p class="tab-item__tag" data-articleTag="${item}">${tags.en[index]}</p>`
+    })
+
+    return `
+        <article class="tab-item">
+            <div class="tab-item__img">
+                <img src="${img}" alt="article image">
+            </div>
+            <div class="tab-item__inner">
+                <div class="tab-item__tags">
+                    ${tagsHtml}
+                </div>
+                <p class="tab-item__time">${timeToRead}</p>
+            </div>
+            <h2 class="tab-item__title">${title}</h2>
+            <p class="tab-item__text">${snippet}</p>
+        </article>
+    `
+}
+
+function createPopularSection() {
+    let tagsHtml = ''
+
+    articles[0].tags.en.forEach((item) => {
+        tagsHtml += `<div class="popular_item-tag">${item}</div>`
+    })
+
+    if (document.querySelector('.popular_items')) {
+        document.querySelector('.popular_items').innerHTML = `
+        <div class="popular_item_info">
+            <div class="popular_item_top">
+                <div class="popular_item_tags">
+                    ${tagsHtml}
+                </div>
+                <div class="popular_item_time">
+                    ${articles[0].timeToRead}
+                </div>
+            </div>
+            <h2 class="popular_item-title">
+                ${articles[0].title}
+            </h2>
+            <p class="popular_item-text">
+                ${articles[0].snippet}
+            </p>
+        </div>
+        <div class="popular_item_img">
+            <img src="${articles[0].img}" alt="" class="popular_item-img">
+        </div>
+    `
+    }
+}
