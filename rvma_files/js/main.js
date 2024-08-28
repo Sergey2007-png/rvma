@@ -53,8 +53,26 @@ $(function () {
   });
 });
 
+function sendForm() {
+   document.getElementById('contactForm').addEventListener('submit', async function (e) {
+      e.preventDefault(); // Предотвращаем стандартное поведение отправки формы
+
+      const formData = new FormData(this);
+
+      const response = await fetch('../php/send_email.php', {
+         method: 'POST',
+         body: formData
+      });
+
+      const result = await response.text();
+      document.getElementById('formResponse').innerHTML = result;
+   });
+
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
+  sendForm()
   const burgerMenu = document.querySelector('.burger_menu');
   const headerMenu = document.querySelector('.header-menu');
 
